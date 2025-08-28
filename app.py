@@ -22,7 +22,6 @@ app.secret_key = SECRET_KEY
 client = MongoClient(MONGO_URI)
 db = client["language_app"]
  # or use your MongoDB Atlas URI    
-db = client["language_app"]
 auth_users = db["auth_users"]
 user_profiles = db["user_profiles"]
 user_activity = db["user_activity"]
