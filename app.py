@@ -8,11 +8,19 @@ import uuid
 from googletrans import LANGUAGES
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "fallback_secret") # change this
 
-# MongoDB setup
+# -----------------------------
+# Load environment variables
+# -----------------------------
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/")  
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback_secret")
+
+# Flask secret key
+app.secret_key = SECRET_KEY
+
+# MongoDB connection
+client = MongoClient(MONGO_URI)
+db = client["language_app"]
  # or use your MongoDB Atlas URI    
 db = client["language_app"]
 auth_users = db["auth_users"]
