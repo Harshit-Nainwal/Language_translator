@@ -11,7 +11,8 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "fallback_secret") # change this
 
 # MongoDB setup
-client = MongoClient("mongodb+srv://Harshit_nainwal09:Harshit09@@cluster0.1vdd0jr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")    
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/")  
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback_secret")
  # or use your MongoDB Atlas URI    
 db = client["language_app"]
 auth_users = db["auth_users"]
