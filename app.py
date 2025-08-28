@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, redirect, session, url_for
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from pymongo import MongoClient
@@ -7,10 +8,11 @@ import uuid
 from googletrans import LANGUAGES
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'  # change this
+app.secret_key = os.getenv("SECRET_KEY", "fallback_secret") # change this
 
 # MongoDB setup
-client = MongoClient("mongodb://localhost:27017/")  # or use your MongoDB Atlas URI
+client = MongoClient("mongodb+srv://Harshit_nainwal09:Harshit09@@cluster0.1vdd0jr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")    
+ # or use your MongoDB Atlas URI    
 db = client["language_app"]
 auth_users = db["auth_users"]
 user_profiles = db["user_profiles"]
